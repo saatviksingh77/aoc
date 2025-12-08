@@ -13,7 +13,7 @@ distbw.sort(key=lambda inner: inner[2])
 # print(distbw)
 
 circuits=[[distbw[0][0],distbw[0][1]]]
-for i in range(1000):
+for i in range(len(distbw)):
     newcircuit=[]
     box1,box2=distbw[i][0],distbw[i][1]
     # print(box1, box2, distbw[i][2])
@@ -40,10 +40,14 @@ for i in range(1000):
         circuits.append([box1,box2])
     # print(circuits)
 
+    if(len(circuits)==1 and len(circuits[0])==len(data)):
+        print(data[box1][0]*data[box2][0])
+        break
 
-circuits.sort(key=len, reverse=True)
-tot=1
-for c in range(3):
-    if c>=len(circuits): break
-    tot*=len(circuits[c])
-print(tot)
+
+# circuits.sort(key=len, reverse=True)
+# tot=1
+# for c in range(3):
+#     if c>=len(circuits): break
+#     tot*=len(circuits[c])
+# print(tot)
